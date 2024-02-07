@@ -8,19 +8,19 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.listatelefonica.databinding.ActivityNovoContatoBinding
+import com.example.listatelefonica.databinding.ActivityNovoContactoBinding
 import com.example.listatelefonica.viewmodel.NovoContactoViewModel
 
 class NovoContatoActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityNovoContatoBinding
+    private lateinit var binding: ActivityNovoContactoBinding
     private lateinit var viewModel: NovoContactoViewModel
     private lateinit var launcher: ActivityResultLauncher<Intent>
     private lateinit var i: Intent
     private var imagemId: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNovoContatoBinding.inflate(layoutInflater)
+        binding = ActivityNovoContactoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         i = intent
@@ -62,7 +62,7 @@ class NovoContatoActivity : AppCompatActivity() {
 
     private fun observe() {
         viewModel.novoContacto().observe(this, Observer {
-            Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Contato Salvo", Toast.LENGTH_SHORT).show();
             setResult(1, i)
             finish()
         })

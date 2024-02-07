@@ -10,6 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#04014E"
         android:scaleX="0.5"
         android:scaleY="0.5"
         android:src="@drawable/contacts"

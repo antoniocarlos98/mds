@@ -12,6 +12,7 @@
         android:theme="@style/Theme.ListaTelefonica"
         tools:targetApi="31">
 
+
         <activity
             android:name=".ui.SelecionarImagemContactoActivity"
             android:exported="false" />

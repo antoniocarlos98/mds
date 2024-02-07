@@ -5,8 +5,27 @@
       <entry key="Unnamed">
         <State />
       </entry>
+      <entry key="Unnamed (1)">
+        <State />
+      </entry>
       <entry key="app">
         <State />
+      </entry>
+      <entry key="mds">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\AntÃ´nio Carlos\.android\avd\Pixel_2_API_33.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-02-02T02:39:33.663622700Z" />
+        </State>
       </entry>
     </value>
   </component>
