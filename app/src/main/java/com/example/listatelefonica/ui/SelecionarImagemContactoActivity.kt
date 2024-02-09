@@ -48,15 +48,17 @@ class SelecionarImagemContactoActivity : AppCompatActivity() {
         i = intent
 
         binding.buttonRemoverImagem.setOnClickListener { sendID(R.drawable.profiledefault) }
+        val imageView = findViewById<ImageView>(R.id.image_save) // assumindo que imageView já foi definido
 
-        btnSavePicture.setOnClickListener {
+        val btnSavePicture = findViewById<Button>(R.id.btn_save_picture)
+        btnSavePicture.setOnClickListener {sendID(R.drawable.profiledefault)
             if (imageView.drawable != null) {
                 try {
                     val imageBitmap = (imageView.drawable as BitmapDrawable).bitmap
                     val savedImageFile = saveImage(imageBitmap)
                     val savedBitmap = BitmapFactory.decodeFile(savedImageFile.absolutePath)
                     imageView.setImageBitmap(savedBitmap)
-                    Toast.makeText(this, "Imagem salva!", Toast.LENGTH_SHORT).show()
+                    // Removido o Toast para "Imagem salva!"
                 } catch (e: Exception) {
                     Toast.makeText(this, "Erro ao salvar a imagem: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
                 }
@@ -64,6 +66,7 @@ class SelecionarImagemContactoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Captura uma imagem antes de salvar", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -78,6 +81,8 @@ class SelecionarImagemContactoActivity : AppCompatActivity() {
     private fun sendID(imagemId: Int) {
         i.putExtra("id", imagemId)
         setResult(1, i)
+        val imageResourceID = 1
+        imageView.setImageResource(imageResourceID)
         finish()
     }
 
@@ -95,5 +100,4 @@ class SelecionarImagemContactoActivity : AppCompatActivity() {
         }
 
         return file
-    }
-}
+    }}
