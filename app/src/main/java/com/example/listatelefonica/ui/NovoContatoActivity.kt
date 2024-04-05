@@ -1,15 +1,24 @@
 package com.example.listatelefonica.ui
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.listatelefonica.R
 import com.example.listatelefonica.databinding.ActivityNovoContactoBinding
 import com.example.listatelefonica.viewmodel.NovoContactoViewModel
+
+const val CHANNEL_ID = "channelId"
 
 class NovoContatoActivity : AppCompatActivity() {
 
@@ -18,10 +27,13 @@ class NovoContatoActivity : AppCompatActivity() {
     private lateinit var launcher: ActivityResultLauncher<Intent>
     private lateinit var i: Intent
     private var imagemId: Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNovoContactoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        createNotificationChannel()
 
         i = intent
 
@@ -60,9 +72,35 @@ class NovoContatoActivity : AppCompatActivity() {
         }
     }
 
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID, "channel",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            channel.description = "test description for my channel"
+
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
     private fun observe() {
         viewModel.novoContacto().observe(this, Observer {
-            Toast.makeText(this, "Contato Salvo", Toast.LENGTH_SHORT).show();
+            // Create the notification
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("PhoneCJK")
+                .setContentText("Contato salvo")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            with(NotificationManagerCompat.from(this)) {
+                notify(1, builder.build())
+            }
+
+            // Toast message
+
             setResult(1, i)
             finish()
         })

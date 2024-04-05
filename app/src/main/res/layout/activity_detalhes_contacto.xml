@@ -29,12 +29,26 @@
         android:gravity="center"
         android:hint="Nome" />
 
-    <EditText
-        android:id="@+id/edit_endereco"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Endereço" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_endereco"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:hint="Endereço" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/imagem_location"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_add_location_24" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
