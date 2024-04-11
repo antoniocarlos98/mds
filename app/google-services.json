@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "757571448621",
+    "project_id": "listatelefonica-45b1c",
+    "storage_bucket": "listatelefonica-45b1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757571448621:android:da064e931040412150eda4",
+        "android_client_info": {
+          "package_name": "com.example.listatelefonica"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvG1-3pZ7wXjEdkBxivQmVOvKw9eSnNYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
