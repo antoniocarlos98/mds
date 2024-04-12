@@ -28,10 +28,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-private val Window.FEATURE_NO_TITLE: Int
-    get() {
-        TODO("Not yet implemented")
-    }
+
 const val CHANNEL_ID = "channelId"
 
 class NovoContatoActivity : AppCompatActivity() {
@@ -139,7 +136,7 @@ class NovoContatoActivity : AppCompatActivity() {
 
     private fun showProgressBar(){
         dialog = Dialog(this@NovoContatoActivity)
-        dialog.requestWindowFeature(window.FEATURE_NO_TITLE)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_wait)
         dialog.setCanceledOnTouchOutside(false)
         dialog.show()
@@ -158,7 +155,7 @@ class NovoContatoActivity : AppCompatActivity() {
             channel.description = "test description for my channel"
 
             val notificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
